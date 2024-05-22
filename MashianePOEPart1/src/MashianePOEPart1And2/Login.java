@@ -1,7 +1,7 @@
-package MashianePOEPart1;
+package MashianePOEPart1And2;
 
 
-import static MashianePOEPart1.RegisterAndLoginSystem.objLogin;
+import static MashianePOEPart1And2.RegisterAndLoginSystem.objLogin;
 import javax.swing.JOptionPane;
 
 
@@ -77,7 +77,7 @@ public class Login {
               objLogin.setUsername(JOptionPane.showInputDialog("Please create a username : "));
     if(username.length()<=5 && username.contains("_")){
               JOptionPane.showMessageDialog(null, "Username successfully captured !"); 
-             
+             break;
                       }
       else{JOptionPane.showMessageDialog(null,"Username is not correctly formatted, please ensure that your username contains an underscore "
                     + "and is no more than 5 characters in length","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -94,7 +94,7 @@ public class Login {
                  objLogin.setPassword(JOptionPane.showInputDialog("Please create a password : "));
               if(password.length()>=8 && password.matches(".*[0-9]*.") && password.matches(".*[A-Z].*") && password.matches(".*[!@#$%^&*()]*.")){
                   JOptionPane.showMessageDialog(null, "Password successfully captured !");
-              }
+             break; }
          else{ 
              JOptionPane.showMessageDialog(null,"Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number and a special character.","ERROR",JOptionPane.ERROR_MESSAGE);
              
@@ -106,13 +106,13 @@ public class Login {
     public String registerUser(){
         for (int i=0;i<1;i++)
         {
-        if (username != username){
+        if (username == null ? username != null : !username.equals(username)){
             
             JOptionPane.showMessageDialog(null,"The username is incorrectly formatted");
             break;
             
         }
-        else if(password!= password){
+        else if(password == null ? password != null : !password.equals(password)){
             JOptionPane.showMessageDialog(null,"The password does not meet the complexity requirements !","ERROR",JOptionPane.ERROR_MESSAGE);
             return null;
         }
@@ -145,6 +145,10 @@ public boolean loginUser(){
         }
            return null;
    }
+      // Create a welcome message method once user was able to login
+   public void welcomeMessage () {
+       JOptionPane.showMessageDialog(null,"Welcome to EasyKanBan ! "); 
+}
 }
         
            
